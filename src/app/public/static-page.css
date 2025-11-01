@@ -1,0 +1,23 @@
+.static-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.page-content p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}

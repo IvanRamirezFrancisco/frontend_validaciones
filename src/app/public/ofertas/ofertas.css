@@ -1,0 +1,139 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 40px 0;
+}
+
+/* --- 1. Banner de Ofertas (Nuevo) --- */
+.offer-banner {
+  /* Usamos el Mamey Claro de tu guía  */
+  background-color: #FFCF71; 
+  color: #333;
+  padding: 40px 0;
+  margin-bottom: 20px; /* Separa del contenido */
+  text-align: center;
+}
+.offer-banner h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+.offer-banner p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* --- 2. Título de la Sección --- */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* ===============================================
+  ESTILOS DE REJILLA (Copiados del Catálogo)
+===============================================
+*/
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.product-image-link, .product-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+.product-image {
+  height: 180px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-family: 'Tahoma', sans-serif;
+}
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.product-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+.product-name-link:hover .product-name {
+  color: #C75D2C;
+}
+.product-desc {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  color: #777;
+  flex-grow: 1;
+  margin: 0 0 10px 0;
+}
+.product-price {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.btn-cta {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #C75D2C;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-cta:hover {
+  background-color: #b35427;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

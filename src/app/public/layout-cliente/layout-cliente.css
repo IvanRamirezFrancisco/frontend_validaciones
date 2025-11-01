@@ -1,0 +1,354 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Tahoma', sans-serif; /* Tipografía base de tu guía */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Cabecera --- */
+.main-header {
+  background-color: #6d1331; /* Rojo Burdeos [cite: 1326] */
+  color: white;
+  padding: 15px 0;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  margin: 0 12px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-login {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: white;
+  color: #6d1331;
+}
+
+.cart-icon {
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+/* --- Contenido Principal --- */
+.main-content {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  background-color: #f4f4f4; /* O un gris claro */
+  padding: 30px 0;
+}
+
+/* --- Pie de Página --- */
+
+
+.main-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+/* ... (los otros estilos del header) ... */
+
+/* Hacemos el ícono 'relativo' para posicionar el badge */
+.cart-icon {
+  position: relative;
+  font-size: 28px; /* Hacemos el ícono un poco más grande */
+}
+
+/* El badge rojo del contador */
+.cart-badge {
+  position: absolute;
+  top: -5px; /* Lo sube un poco */
+  right: -10px; /* Lo mueve a la derecha */
+
+  /* Usamos el Rojo de tu paleta de admin */
+  background-color: #E57373; 
+  color: white;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%; /* Círculo perfecto */
+  width: 20px;
+  height: 20px;
+
+  /* Centra el número */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-logout {
+  font-family: 'Montserrat', sans-serif;
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-logout:hover {
+  background-color: white;
+  color: #6d1331;
+}
+.btn-profile {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.btn-profile:hover {
+  text-decoration: underline;
+}
+/* --- Estilos para Logo e Iconos (NUEVO) --- */
+
+.logo img {
+  height: 70px; /* Ajusta la altura de tu logo */
+  width: 40;
+  display: block;
+}
+
+.icon-link img,
+.cart-icon img {
+  height: 40px; /* Ajusta la altura de tus iconos */
+  width: 40px;
+  display: block;
+}
+
+.cart-icon {
+  position: relative; /* Mantiene el badge en su lugar */
+}
+
+/* Reemplaza el texto "Iniciar Sesión" */
+.btn-login {
+  border: none;
+  padding: 0;
+}
+.btn-login:hover {
+  background: none;
+}
+
+/* --- 4. Pie de Página (Footer) - REDISEÑADO --- */
+.main-footer {
+  background-color: #6d1331; /* Rojo Burdeos */
+  color: #f0f0f0; /* Un blanco más suave */
+  padding: 40px 0;
+  font-family: 'Tahoma', sans-serif;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 30px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo img {
+  height: 40px;
+  width: auto;
+  margin-bottom: 15px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+  margin: 0;
+}
+
+.footer-col h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer-nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin-bottom: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  display: block;
+}
+
+.social-icons img {
+  height: 28px;
+  width: 28px;
+  transition: opacity 0.2s;
+}
+.social-icons img:hover {
+  opacity: 0.8;
+}
+
+/* Ajuste responsive para el footer en móviles */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr; /* 1 columna */
+  }
+}
+
+.social-icons img {
+  height: 50px; /* Ajusta la altura de tus iconos sociales */
+  width: 50px;
+}
+/* --- Estilos para el Buscador (NUEVO) --- */
+.header-search {
+  flex-grow: 1; /* Ocupa el espacio del centro */
+  max-width: 600px;
+  display: flex;
+  margin: 0 20px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.header-search input {
+  flex-grow: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: 'Tahoma', sans-serif;
+  outline: none;
+}
+
+.header-search .search-button {
+  background-color: #FFCF71; /* Color Mamey Claro */
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-search .search-button img {
+  height: 20px;
+  width: 20px;
+}
+
+
+/* --- Estilos para el Subheader (NUEVO) --- */
+.subheader {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.subheader .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.subheader a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #555;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.subheader a:hover {
+  color: #333;
+}
+
+/* Estilo para la pestaña ACTIVA */
+.subheader a.active {
+  color: #C75D2C; /* Naranja Tostado */
+  border-bottom: 3px solid #C75D2C;
+}
+
+/* --- Ajuste al Layout --- */
+/* Quitamos la barra de navegación antigua */
+.main-nav {
+  display: none;
+}

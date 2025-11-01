@@ -1,0 +1,86 @@
+<div class="container">
+  <h1 class="page-title">Tu Carrito de Compras</h1>
+
+  <div *ngIf="items.length > 0; else carritoVacio" class="cart-layout">
+    
+    <div class="cart-items-container">
+      
+      <div class="cart-header-card">
+        <label class="checkbox-container">
+          <input type="checkbox" checked>
+          <span class="checkmark"></span>
+          Todos los productos
+        </label>
+      </div>
+
+      <div *ngFor="let item of items" class="cart-item-card">
+        <label class="checkbox-container item-checkbox">
+          <input type="checkbox" checked>
+          <span class="checkmark"></span>
+        </label>
+        
+        <div class="item-image"></div>
+        
+        <div class="item-info">
+          <h4 class="item-name">{{ item.producto }}</h4>
+          <span class="item-sku">SKU: {{ item.sku }}</span>
+          <button class="btn-eliminar" (click)="eliminarItem(item.sku)">Eliminar</button>
+        </div>
+
+        <div class="quantity-selector-cart">
+          <button (click)="disminuirCantidad(item)">-</button>
+          <span>{{ item.cantidad }}</span>
+          <button (click)="aumentarCantidad(item)">+</button>
+        </div>
+
+        <div class="item-total-price">
+          {{ (item.precio * item.cantidad) | currency }}
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h3>Resumen de compra</h3>
+      <div class="summary-row">
+        <span>Productos ({{ items.length }})</span>
+        <span>{{ subtotal | currency }}</span>
+      </div>
+      <div class="summary-row">
+        <span>Envíos</span>
+        <span class="envio-gratis">Gratis</span>
+      </div>
+      
+      <div class="summary-total">
+        <span>Total:</span>
+        <span>{{ subtotal | currency }}</span>
+      </div>
+      <button class="btn btn-cta-large">Continuar compra</button>
+    </div>
+
+  </div>
+
+  <ng-template #carritoVacio>
+    <div class="empty-cart">
+      <p>Tu carrito de compras está vacío.</p>
+      <a routerLink="/catalogo" class="btn btn-cta">Volver al Catálogo</a>
+    </div>
+  </ng-template>
+
+  <div class="related-products">
+    <h3 class="section-title">Productos que podrían interesarte</h3>
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let p of recomendados">
+        <a [routerLink]="['/producto', p.sku]" class="product-image-link">
+          <div class="product-image"></div>
+        </a>
+        <div class="product-info">
+          <a [routerLink]="['/producto', p.sku]" class="product-name-link">
+            <h4 class="product-name">{{ p.producto }}</h4>
+          </a>
+          <div class="product-price">{{ p.precio | currency }}</div>
+          <button class="btn-cta" (click)="agregarRecomendadoAlCarrito(p)">Añadir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

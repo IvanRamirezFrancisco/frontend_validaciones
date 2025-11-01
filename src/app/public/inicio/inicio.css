@@ -1,0 +1,180 @@
+.hero-banner {
+  background-color: #333; /* Un fondo oscuro para el banner */
+  /* Si tuvieras una imagen de fondo, iría aquí */
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.hero-banner h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-banner p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 20px;
+  margin: 10px 0 30px 0;
+}
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #C75D2C; /* Naranja Tostado */
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.2s ease;
+}
+.btn-cta:hover {
+  background-color: #b35427;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* --- Estilos Reutilizables --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 40px 0;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #C75D2C; /* Naranja Tostado */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #333;
+  background-color: #FFCF71; /* Mamey Claro */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* --- 1. Slider --- */
+.slider-container {
+  background-color: #34495e; /* Color oscuro temporal */
+  color: white;
+  padding: 60px 0;
+}
+.slide {
+  text-align: center;
+}
+.slide h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+.slide p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+
+/* --- 2. Rejilla de Categorías --- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 20px;
+}
+
+.category-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  background-color: #f0f0f0; /* Fondo temporal */
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 3. Sección "Sobre Nosotros" --- */
+.about-us-container {
+  background-color: #f9f9f9; /* Fondo gris claro */
+  padding: 40px 0;
+}
+
+.about-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-us-text .section-title {
+  text-align: left;
+}
+.about-us-text p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.about-us-image {
+  height: 300px;
+  background-color: #ddd; /* Marcador para la imagen */
+  border-radius: 8px;
+}
+
+/* --- Responsive para Móvil --- */
+@media (max-width: 900px) {
+  .header-search {
+    display: none; /* Ocultamos el buscador en móvil */
+  }
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+  .about-us-grid {
+    grid-template-columns: 1fr; /* 1 columna */
+  }
+}

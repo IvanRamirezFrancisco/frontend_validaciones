@@ -1,0 +1,157 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+/* Layout de 2 Columnas */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* 260px para el menú, el resto para el contenido */
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* 1. Columna Izquierda (Menú) */
+.profile-nav {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 10px;
+}
+
+.profile-nav .nav-link {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 15px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.profile-nav .nav-link small {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+}
+
+.profile-nav .nav-link:hover {
+  background-color: #f9f9f9;
+}
+
+.profile-nav .nav-link.active {
+  background-color: #fef5ed; /* Un naranja muy pálido */
+  color: #C75D2C; /* Naranja Tostado */
+}
+
+.profile-nav .nav-link.disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}
+.profile-nav .nav-link.disabled:hover {
+  background: none;
+}
+
+/* 2. Columna Derecha (Contenido) */
+.profile-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 20px 30px;
+}
+
+.profile-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  margin-top: 0;
+}
+.profile-content p {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Formulario */
+.profile-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.profile-form label {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.profile-form input[type="text"],
+.profile-form input[type="email"] {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+}
+.profile-form input:disabled {
+  background-color: #f4f4f4;
+  color: #777;
+}
+.profile-form small {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.form-actions {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #C75D2C;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive para móvil */
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+}

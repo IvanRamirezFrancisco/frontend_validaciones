@@ -1,0 +1,94 @@
+/* En: src/app/admin/producto-form/producto-form.css */
+
+/* Re-usamos el estilo del título de la página */
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.product-form {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  max-width: 800px; /* Limita el ancho del formulario */
+}
+
+/* Fila para poner campos uno al lado del otro */
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  flex: 1; /* Ocupa el espacio disponible */
+}
+
+.form-group label {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical; /* Permite al usuario cambiar la altura */
+}
+
+/* Contenedor de botones */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+/* Estilo Base del Botón */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Botón Primario (Guardar) - Verde */
+.btn-primary {
+  background-color: #4CAF50;
+}
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* Botón Secundario (Cancelar) - Gris */
+.btn-secondary {
+  background-color: #B0BEC5; /* Gris de tu guía */
+  color: #333;
+}
+.btn-secondary:hover {
+  background-color: #90a4ae;
+}

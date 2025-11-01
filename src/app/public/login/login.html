@@ -1,0 +1,199 @@
+<section class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-section">
+        <img src="logoP.png" alt="Casa de Música" class="logo-icon">
+        <h1>Bienvenido</h1>
+      </div>
+      <p class="login-subtitle">Inicia sesión en tu cuenta</p>
+    </div>
+
+    <!-- Mensaje de bloqueo temporal -->
+    @if (isBlocked) {
+      <div class="blocked-message" role="alert">
+        <i class="warning-icon">🔒</i>
+        <div class="blocked-content">
+          <h3>Cuenta bloqueada temporalmente</h3>
+          <p>Demasiados intentos fallidos. Intente nuevamente en:</p>
+          <div class="countdown">{{ formatTimeRemaining() }}</div>
+        </div>
+      </div>
+    }
+
+    <!-- Mensaje de error general -->
+    @if (errorMessage && !isBlocked) {
+      <div class="error-message" role="alert">
+        <i class="error-icon">⚠️</i>
+        <span>{{ errorMessage }}</span>
+        <button type="button" class="close-error" (click)="clearError()" aria-label="Cerrar error">
+          ✕
+        </button>
+      </div>
+    }
+
+    <!-- Formulario de login -->
+    <form [formGroup]="loginForm" class="login-form" novalidate (ngSubmit)="handleLogin()">
+      <!-- Selector de tipo de usuario -->
+      <div class="form-group">
+        <label for="tipo" class="form-label">Tipo de Usuario</label>
+        <select 
+          id="tipo" 
+          formControlName="tipo"
+          class="form-control"
+          [class.error]="tipo?.touched && tipo?.invalid">
+          <option value="Cliente">Cliente</option>
+          <option value="Empleado">Empleado</option>
+        </select>
+        @if (tipo?.touched && tipo?.invalid) {
+          <div class="field-error">
+            {{ getErrorMessage('tipo') }}
+          </div>
+        }
+      </div>
+
+      <!-- Campo de nombre/usuario -->
+      <div class="form-group">
+        <label for="nombre" class="form-label">
+          {{ loginForm.get('tipo')?.value === 'Cliente' ? 'Nombre completo' : 'Usuario' }}
+        </label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="nombre"
+            formControlName="nombre"
+            [placeholder]="loginForm.get('tipo')?.value === 'Cliente' ? 'Ingresa tu nombre completo' : 'Nombre de usuario'"
+            class="form-control"
+            [class.error]="nombre?.touched && nombre?.invalid"
+            [class.success]="nombre?.valid && nombre?.value"
+            autocomplete="username"
+            [disabled]="isBlocked">
+          <i class="input-icon user-icon" 
+             [class.error]="nombre?.touched && nombre?.invalid"
+             [class.success]="nombre?.valid && nombre?.value">
+            <img src="assets/images/usuario.png" alt="Usuario" style="width: 16px; height: 16px;">
+          </i>
+        </div>
+        @if (nombre?.touched && nombre?.invalid) {
+          <div class="field-error">
+            {{ getErrorMessage('nombre') }}
+          </div>
+        }
+      </div>
+
+      <!-- Campo de contraseña -->
+      <div class="form-group">
+        <label for="contrasena" class="form-label">Contraseña</label>
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="contrasena"
+            formControlName="contrasena"
+            placeholder="Ingresa tu contraseña"
+            class="form-control"
+            [class.error]="contrasena?.touched && contrasena?.invalid"
+            [class.success]="contrasena?.valid && contrasena?.value"
+            autocomplete="current-password"
+            [disabled]="isBlocked"
+            (keypress)="onKeyPress($event)">
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePassword()"
+            [disabled]="isBlocked"
+            [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+            <img [src]="showPassword ? 'assets/images/invisible.png' : 'assets/images/ojo.png'" 
+                 [alt]="showPassword ? 'Ocultar' : 'Mostrar'" 
+                 style="width: 16px; height: 16px;">
+          </button>
+        </div>
+        @if (contrasena?.touched && contrasena?.invalid) {
+          <div class="field-error">
+            {{ getErrorMessage('contrasena') }}
+          </div>
+        }
+      </div>
+
+      <!-- Indicador de intentos -->
+      @if (loginAttempts > 0 && !isBlocked) {
+        <div class="attempts-warning">
+          <i class="warning-icon">⚠️</i>
+          <span>Intentos fallidos: {{ loginAttempts }} / {{ maxAttempts }}</span>
+        </div>
+      }
+
+      <!-- Botón de submit -->
+      <button
+        type="submit"
+        class="btn-login"
+        [disabled]="isLoading || isBlocked || loginForm.invalid">
+        @if (isLoading) {
+          <span class="loading-spinner"></span>
+          Iniciando sesión...
+        } @else if (isBlocked) {
+          <span class="blocked-icon">🔒</span>
+          Cuenta bloqueada
+        } @else {
+          Iniciar Sesión
+        }
+      </button>
+    </form>
+
+    <!-- Demo credentials (solo para empleados) -->
+    @if (loginForm.get('tipo')?.value === 'Empleado' && !isBlocked) {
+      <div class="demo-section">
+        <p class="demo-title">🎯 Credenciales de prueba:</p>
+        <div class="demo-buttons">
+          <button 
+            type="button" 
+            class="demo-btn" 
+            (click)="fillDemoCredentials('admin')"
+            [disabled]="isLoading">
+            <span class="demo-role">👑</span>
+            Admin
+          </button>
+          <button 
+            type="button" 
+            class="demo-btn" 
+            (click)="fillDemoCredentials('vendedor')"
+            [disabled]="isLoading">
+            <span class="demo-role">🛒</span>
+            Vendedor
+          </button>
+          <button 
+            type="button" 
+            class="demo-btn" 
+            (click)="fillDemoCredentials('inventario')"
+            [disabled]="isLoading">
+            <span class="demo-role">📦</span>
+            Inventario
+          </button>
+        </div>
+        <p class="demo-note">💡 Usa cualquier contraseña para acceder</p>
+        <div class="professor-note">
+          <strong>🎓 Para el Profesor:</strong><br>
+          Cualquier usuario/contraseña funciona.<br>
+          Usuarios desconocidos acceden como Administrador.
+        </div>
+      </div>
+    }
+
+    <!-- Enlaces adicionales -->
+    <div class="login-footer">
+      <div class="footer-links">
+        <a routerLink="/" class="back-link" [class.disabled]="isLoading">
+          ← Volver al inicio
+        </a>
+        <a routerLink="/contacto" class="help-link" [class.disabled]="isLoading">
+          ¿Necesitas ayuda?
+        </a>
+      </div>
+      <div class="register-link">
+        <p>¿No tienes cuenta? 
+          <a routerLink="/registro" class="register-btn" [class.disabled]="isLoading">
+            Regístrate aquí
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,153 @@
+<h1 class="page-title">Generador de Reportes</h1>
+
+<div class="card-container filter-card">
+  
+  <div class="filter-group">
+    <label>Tipo de Reporte</label>
+    <div class="report-tabs">
+      <button 
+        class="tab-btn"
+        [class.active]="reporteActivo === 'ventas'"
+        (click)="seleccionarReporte('ventas')">
+        Ventas
+      </button>
+      <button 
+        class="tab-btn"
+        [class.active]="reporteActivo === 'inventario'"
+        (click)="seleccionarReporte('inventario')">
+        Inventario
+      </button>
+      <button 
+        class="tab-btn"
+        [class.active]="reporteActivo === 'productos-mas-vendidos'"
+        (click)="seleccionarReporte('productos-mas-vendidos')">
+        Productos Más Vendidos
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <label>Rango de Fechas</label>
+    <div class="date-range">
+      <input type="date" name="fechaDesde" [(ngModel)]="fechaDesde">
+      <span>hasta</span>
+      <input type="date" name="fechaHasta" [(ngModel)]="fechaHasta">
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" (click)="generarReporte()">
+      Generar Reporte
+    </button>
+    <button class="btn btn-secondary" (click)="exportarReporte()">
+      Exportar a CSV
+    </button>
+  </div>
+</div>
+
+
+<div class="card-container report-content">
+  <h3 class="card-title">
+    Resultados: Reporte de {{ reporteActivo | titlecase }}
+  </h3>
+
+  <!-- Resumen General -->
+  <div class="stats-summary">
+    <div class="stat-item">
+      <span class="stat-label">Ventas Totales:</span>
+      <span class="stat-value">{{ resumenGeneral.ventasTotales }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Ingresos Totales:</span>
+      <span class="stat-value">${{ resumenGeneral.ingresosTotales | number:'1.2-2' }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Productos en Stock:</span>
+      <span class="stat-value">{{ resumenGeneral.productosEnStock }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Productos Agotados:</span>
+      <span class="stat-value">{{ resumenGeneral.productosAgotados }}</span>
+    </div>
+  </div>
+
+  <!-- Tabla de Ventas -->
+  <div class="table-container-report" *ngIf="reporteActivo === 'ventas'">
+    <table>
+      <thead>
+        <tr>
+          <th>Período</th>
+          <th>Ventas</th>
+          <th>Productos Vendidos</th>
+          <th>Ingreso Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estadistica of estadisticasVentas">
+          <td>{{ estadistica.periodo }}</td>
+          <td>{{ estadistica.ventasTotales }}</td>
+          <td>{{ estadistica.productosVendidos }}</td>
+          <td>${{ estadistica.ingresoTotal | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabla de Inventario -->
+  <div class="table-container-report" *ngIf="reporteActivo === 'inventario'">
+    <table>
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Stock</th>
+          <th>Precio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productosInventario" [class.low-stock]="producto.stock <= 5">
+          <td>{{ producto.sku }}</td>
+          <td>{{ producto.producto }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>${{ producto.precio | number:'1.2-2' }}</td>
+          <td>
+            <span class="status-badge" 
+                  [class.success]="producto.stock > 5" 
+                  [class.warning]="producto.stock > 0 && producto.stock <= 5"
+                  [class.danger]="producto.stock === 0">
+              {{ producto.stock === 0 ? 'Agotado' : producto.stock <= 5 ? 'Bajo Stock' : 'Disponible' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabla de Productos Más Vendidos -->
+  <div class="table-container-report" *ngIf="reporteActivo === 'productos-mas-vendidos'">
+    <table>
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Producto</th>
+          <th>Cantidad Vendida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productosMasVendidos">
+          <td>{{ producto.sku }}</td>
+          <td>{{ producto.producto }}</td>
+          <td>{{ producto.cantidadVendida }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mensaje cuando no hay datos -->
+  <div class="no-data" *ngIf="reporteActivo === 'ventas' && estadisticasVentas.length === 0">
+    <p>No hay datos de ventas para el período seleccionado.</p>
+  </div>
+</div>

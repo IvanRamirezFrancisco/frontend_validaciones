@@ -1,0 +1,32 @@
+<div class="offer-banner">
+  <div class="container">
+    <h2>¡Grandes Ofertas!</h2>
+    <p>Aprovecha descuentos especiales en productos seleccionados por tiempo limitado.</p>
+  </div>
+</div>
+
+<div class="container section-padding">
+  <h3 class="section-title">Todos los Productos en Oferta</h3>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of productosEnOferta">
+      
+      <a [routerLink]="['/producto', p.sku]" class="product-image-link">
+        <div class="product-image">
+          </div>
+      </a>
+
+      <div class="product-info">
+        <a [routerLink]="['/producto', p.sku]" class="product-name-link">
+          <h4 class="product-name">{{ p.producto }}</h4>
+        </a>
+        <p class="product-desc">Sonido clásico y cálido, ideal para son huasteco y trova.</p>
+        <div class="product-price">{{ p.precio | currency }}</div>
+        <button class="btn-cta" (click)="agregarAlCarrito(p)">
+          Añadir al Carrito
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

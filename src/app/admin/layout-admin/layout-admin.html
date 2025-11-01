@@ -1,0 +1,48 @@
+<div class="sidebar">
+  <div class="logo">
+    Casa de Música
+    <span class="logo-role" *ngIf="rolUsuario">({{ rolUsuario }})</span>
+  </div>
+  
+  <nav>
+    <a *ngIf="tieneRol('Administrador')"
+       routerLink="dashboard" routerLinkActive="active">
+      <span class="icon">📈</span> 
+      Dashboard
+    </a>
+
+    <a *ngIf="tieneRol('Administrador') || tieneRol('Inventario')"
+       routerLink="inventario" routerLinkActive="active">
+      <img src="icons/inventario.png" alt="Inventario" class="icon-img">
+      Inventario
+    </a>
+
+    <a *ngIf="tieneRol('Administrador')"
+       routerLink="reportes" routerLinkActive="active">
+      <img src="icons/reporte.png" alt="Reportes" class="icon-img">
+      Reportes
+    </a>
+
+    <a *ngIf="tieneRol('Administrador')"
+       routerLink="usuarios" routerLinkActive="active">
+       <img src="icons/gestordeempleado.png" alt="Usuarios" class="icon-img">
+      Gestión de Usuarios
+    </a>
+
+    <a *ngIf="tieneRol('Administrador') || tieneRol('Vendedor')"
+       routerLink="punto-de-venta" routerLinkActive="active">
+       <img src="icons/puntodeventa.png" alt="Punto de Venta" class="icon-img">
+      Punto de Venta
+    </a>
+  </nav>
+
+  <div class="footer-sidebar">
+    <button (click)="logout()" class="btn-logout-icon" title="Cerrar Sesión">
+      <img src="icons/cerrarsesion.png" alt="Cerrar Sesión">
+    </button>
+  </div>
+</div>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

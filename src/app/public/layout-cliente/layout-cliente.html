@@ -1,0 +1,100 @@
+<header class="main-header">
+  <div class="container">
+    
+    <a routerLink="/" class="logo">
+      <img src="assets/images/logo-castillo.jpg" alt="Casa de Música Castillo">
+    </a>
+
+    <div class="header-search">
+      <input type="text" placeholder="Busca guitarras, pianos, y más...">
+      <button class="search-button">
+        <img src="icons/lupa.png" alt="Buscar">
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <ng-container *ngIf="!(currentUser$ | async); else loggedIn">
+        <a routerLink="/login" class="icon-link" aria-label="Iniciar Sesión">
+          <img src="icons/perfil.png" alt="Perfil">
+        </a>
+      </ng-container>
+      
+      <ng-template #loggedIn>
+        <div *ngIf="currentUser$ | async as user" class="user-info">
+  <span>Hola, {{ user.nombre }}</span>
+  
+  <a *ngIf="user.rol === 'Cliente'" routerLink="/perfil" class="btn-profile">
+    Mi Perfil
+  </a>
+
+  <button (click)="logout()" class="btn-logout">Cerrar Sesión</button>
+</div>
+      </ng-template>
+
+      <a routerLink="/carrito" class="cart-icon">
+        <img src="icons/carrito.png" alt="Carrito">
+        <span *ngIf="cartItemCount > 0" class="cart-badge">
+          {{ cartItemCount }}
+        </span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="subheader">
+  <div class="container">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+    <a routerLink="/ofertas" routerLinkActive="active">Ofertas</a>
+    <a routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
+    <a routerLink="/ayuda" routerLinkActive="active">Ayuda</a>
+  </div>
+</nav>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="main-footer">
+  <div class="container footer-grid">
+    
+    <div class="footer-col">
+      <a routerLink="/" class="footer-logo">
+        <img src="assets/images/logo-castillo.jpg" alt="Casa de Música Castillo">
+      </a>
+      <p class_="">© 2025 Casa de Música Castillo. <br> Todos los derechos reservados.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Enlaces Rápidos</h4>
+      <nav class="footer-nav">
+        <a routerLink="/">Inicio</a>
+        <a routerLink="/catalogo">Catálogo</a>
+        <a routerLink="/ofertas">Ofertas</a>
+        <a routerLink="/ayuda">Ayuda</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contáctanos</h4>
+      <address class="footer-contact">
+        <p>Calle Principal #123, Col. Centro</p>
+        <p>Huejutla de Reyes, Hgo.</p>
+        <p>Tel: (771) 123-4567</p>
+        <p>Email: contacto@casamusica.com</p>
+      </address>
+    </div>
+
+    <div class="footer-col">
+      <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="httpsT://facebook.com/tu-pagina" target="_blank" rel="noopener">
+          <img src="icons/facebook.png" alt="Facebook">
+        </a>
+        <a href="httpsT://wa.me/tu-numero" target="_blank" rel="noopener">
+          <img src="icons/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,40 @@
+<h1 class="page-title">Gestión de Usuarios y Roles</h1>
+
+<div class="header-actions">
+  <a routerLink="/admin/usuarios/nuevo" class="btn btn-primary">
+    <img src="icons/agregarempleado.png" alt="">
+    Agregar Nuevo Usuario
+  </a>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre de Usuario</th>
+        <th>Rol Asignado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of listaUsuarios">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nombre }}</td>
+        <td>
+          <span class="status-rol" [class]="user.rol.toLowerCase()">
+            {{ user.rol }}
+          </span>
+        </td>
+        <td class="acciones">
+          <a [routerLink]="['/admin/usuarios/editar', user.id]" class="btn-icon btn-edit" title="Editar">
+            <img src="icons/editar.png" alt="Editar">
+          </a>
+          <button (click)="eliminarUsuario(user.id)" class="btn-icon btn-delete" title="Eliminar">
+            <img src="icons/eliminar.png" alt="Eliminar">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

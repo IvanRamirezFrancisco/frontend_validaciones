@@ -1,0 +1,107 @@
+<div class="page-container">
+  <div class="container">
+    
+    <nav class="breadcrumbs">
+      <a routerLink="/">Inicio</a> / 
+      <a routerLink="/catalogo">Catálogo</a> / 
+      <span *ngIf="producto">{{ producto.producto }}</span>
+    </nav>
+
+    <div *ngIf="producto; else noEncontrado" class="detail-layout">
+
+      <div class="product-gallery">
+        <div class="thumbnail-list">
+          <div class="thumb-box active"><img src="images/logo-castillo.jpg" alt="thumb"></div>
+          <div class="thumb-box"><img src="images/logo-castillo.jpg" alt="thumb"></div>
+          <div class="thumb-box"><img src="images/logo-castillo.jpg" alt="thumb"></div>
+        </div>
+        <div class="main-image">
+          (Imagen Principal)
+        </div>
+      </div>
+
+      <div class="product-details-box">
+        
+        <div class="title-header">
+          <h1 class="product-title">{{ producto.producto }}</h1>
+          <span class="product-sku">CODIGO: {{ producto.sku }}</span>
+        </div>
+        
+        <div class="product-reviews">
+          <span>⭐⭐⭐⭐⭐</span> (5 Reseñas)
+        </div>
+
+        <div class="brand-logo">
+          <img src="images/logo-castillo.jpg" alt="Marca" style="height: 40px; opacity: 0.5;">
+        </div>
+
+        <div class="stock-status">
+          En existencia
+        </div>
+
+        <div class="product-price-detail">{{ producto.precio | currency }}</div>
+        
+        <p class="payment-info">18 x $ {{(producto.precio / 18) | number:'1.2-2'}} sin interés</p>
+
+        <div class="quantity-selector">
+          <button (click)="decrement()">-</button>
+          <input type="number" [(ngModel)]="quantity" min="1">
+          <button (click)="increment()">+</button>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-comprar" (click)="addToCart()">Añadir al Carrito</button>
+          <button class="btn btn-apartar">Apartar con $ {{(producto.precio * 0.1) | number:'1.2-2'}}</button>
+        </div>
+        
+        <div class="product-meta">
+          <span>Garantía: 1 Año</span>
+          <span>Marca: (Marca)</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noEncontrado>
+      <h1 class="page-title">Producto no encontrado</h1>
+      <a routerLink="/" class="btn btn-cta">Volver al Catálogo</a>
+    </ng-template>
+
+    <div class="product-tabs-container">
+      <nav class="product-tabs">
+        <a class="tab active">Descripción</a>
+        <a class="tab">Especificaciones</a>
+        <a class="tab">Preguntas</a>
+        <a class="tab">Reseñas</a>
+      </nav>
+      <div class="tab-content">
+        <h3>Descripción del Producto</h3>
+        <p>Sonido clásico y cálido, ideal para son huasteco y trova. Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. 
+          Donec rutrum sed sem quis venenatis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. 
+          Donec rutrum sed sem quis venenatis.</p>
+      </div>
+    </div>
+
+    <div class="related-products">
+  <h3 class="section-title">Productos Similares</h3>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of relatedProducts | slice:0:4">
+      <a [routerLink]="['/producto', p.sku]" class="product-image-link">
+        <div class="product-image"></div>
+      </a>
+      <div class="product-info">
+        <a [routerLink]="['/producto', p.sku]" class="product-name-link">
+          <h4 class="product-name">{{ p.producto }}</h4>
+        </a>
+        <div class="product-price">{{ p.precio | currency }}</div>
+        
+        <button class="btn-cta" (click)="agregarSimilarAlCarrito(p)">
+          Añadir al Carrito
+        </button>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div> </div>

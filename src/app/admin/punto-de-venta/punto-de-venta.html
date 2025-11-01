@@ -1,0 +1,70 @@
+<div class="pos-layout">
+
+  <div class="product-selector">
+    <h1 class="page-title">Punto de Venta</h1>
+    
+    <div class="search-bar-pos">
+      <input type="text" 
+             placeholder="Buscar por Nombre o SKU..."
+             [(ngModel)]="busqueda" 
+             (input)="buscarProducto()">
+      <img src="icons/lupa.png" alt="Buscar">
+    </div>
+
+    <div class="search-results">
+      <div *ngFor="let p of resultadosBusqueda" class="product-item">
+        <div class="product-info">
+          <span class="product-name">{{ p.producto }}</span>
+          <span class="product-sku">SKU: {{ p.sku }} | Stock: {{ p.stock }}</span>
+        </div>
+        <div class="product-price">{{ p.precio | currency }}</div>
+        <button (click)="agregarAlTicket(p)" class="btn-add">+</button>
+      </div>
+      
+      <div *ngIf="resultadosBusqueda.length === 0" class="no-results">
+        No se encontraron productos.
+      </div>
+    </div>
+  </div>
+
+  <div class="ticket-display">
+    <h3 class="ticket-title">Ticket de Venta</h3>
+    
+    <div class="ticket-items">
+      <div *ngIf="ticketActual.length === 0" class="ticket-empty">
+        Agregue productos...
+      </div>
+      
+      <div *ngFor="let item of ticketActual" class="ticket-item">
+        <div class="item-info">
+          <span class="item-name">{{ item.producto }}</span>
+          <span class="item-qty">Cant: {{ item.cantidad }} x {{ item.precio | currency }}</span>
+        </div>
+        <span class="item-total">{{ (item.precio * item.cantidad) | currency }}</span>
+        <button (click)="eliminarDelTicket(item.sku)" class="btn-remove-item">
+          <img src="icons/eliminar.png" alt="Quitar">
+        </button>
+      </div>
+    </div>
+
+    <div class="ticket-summary">
+      <div class="summary-row">
+        <span>Subtotal:</span>
+        <span>{{ subtotal | currency }}</span>
+      </div>
+      <div class="summary-row">
+        <span>IVA (16%):</span>
+        <span>{{ iva | currency }}</span>
+      </div>
+      <div class="summary-total">
+        <span>Total:</span>
+        <span>{{ total | currency }}</span>
+      </div>
+    </div>
+    
+    <button (click)="finalizarVenta()" class="btn-finish-sale">
+      Finalizar Venta
+    </button>
+  </div>
+
+</div>

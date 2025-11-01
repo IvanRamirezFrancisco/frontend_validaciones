@@ -1,0 +1,256 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.cart-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Columna Izquierda */
+.cart-items-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Tarjeta de "Todos los productos" */
+.cart-header-card {
+  background-color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+/* Tarjeta de Item Individual */
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.item-sku {
+  font-family: 'Tahoma', sans-serif;
+  color: #888;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: #C75D2C; /* Naranja */
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.btn-eliminar:hover { text-decoration: underline; }
+
+/* Selector de Cantidad */
+.quantity-selector-cart {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.quantity-selector-cart button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 700;
+  color: #C75D2C;
+  cursor: pointer;
+}
+.quantity-selector-cart button:hover { background-color: #f9f9f9; }
+.quantity-selector-cart span {
+  width: 40px;
+  text-align: center;
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.item-total-price {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  width: 120px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Columna Derecha */
+.cart-summary {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.cart-summary h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.summary-row, .summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.envio-gratis { color: #27ae60; font-weight: 600; }
+.summary-total {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+.btn-cta-large {
+  display: block; width: 100%; padding: 15px;
+  font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 500;
+  text-align: center; text-decoration: none; color: white;
+  background-color: #C75D2C; border: none;
+  border-radius: 5px; cursor: pointer; margin-top: 15px;
+}
+
+/* Carrito Vacío */
+.empty-cart { text-align: center; padding: 40px; background-color: white; border-radius: 8px; }
+.btn-cta {
+  display: inline-block; text-decoration: none; font-family: 'Montserrat', sans-serif;
+  font-weight: 500; color: white; background-color: #C75D2C;
+  padding: 10px 15px; border-radius: 5px;
+}
+
+/* --- Checkbox Personalizado (Estilo ML) --- */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #eee;
+}
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #C75D2C; /* Naranja */
+  border-color: #C75D2C;
+}
+.checkmark:after {
+  content: "";
+  position: relative;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.item-checkbox {
+  flex-shrink: 0;
+}
+
+/* --- Recomendaciones --- */
+.related-products {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+/* (Copiamos los estilos del catálogo para la rejilla) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.product-card {
+  background-color: white; border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.product-image-link, .product-name-link { text-decoration: none; color: inherit; }
+.product-image { height: 180px; background-color: #f0f0f0; }
+.product-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+.product-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 5px 0; }
+.product-name-link:hover .product-name { color: #C75D2C; }
+.product-price { font-family: 'Tahoma', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 15px; flex-grow: 1; }
+.btn-cta { 
+  display: block; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; 
+  font-weight: 500; color: white; background-color: #C75D2C; padding: 10px; 
+  border-radius: 5px; transition: background-color 0.2s ease; border: none; cursor: pointer;
+}

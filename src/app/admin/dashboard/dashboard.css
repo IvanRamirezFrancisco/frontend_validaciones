@@ -1,0 +1,165 @@
+/* Título H1 */
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* 1. Contenedor de las tarjetas de KPI */
+.kpi-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.kpi-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px 24px;
+  flex: 1;
+}
+.kpi-label {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  color: #535c66;
+  margin-bottom: 8px;
+}
+.kpi-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333;
+}
+.kpi-card.low-stock .kpi-value {
+  color: #E57373; /* Rojo */
+}
+
+/* ========================== */
+/* ★★ NUEVOS ESTILOS ★★ */
+/* ========================== */
+
+/* Estilo base para las nuevas tarjetas (blancas) */
+.card-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* 2. Estilos del Gráfico Simulado */
+.chart-area {
+  height: 200px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-end; /* Alinea las barras abajo */
+}
+.chart-area .bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bar {
+  width: 30px;
+  background-color: #535c66; /* Gris Oscuro */
+  border-radius: 4px 4px 0 0;
+  transition: height 0.5s ease;
+}
+.bar:hover {
+  background-color: #34495e; /* Más oscuro */
+}
+.bar-label {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* 3. Estilos de las Tablas */
+.tables-layout {
+  display: flex;
+  gap: 20px;
+}
+.table-container {
+  flex: 1; /* Ocupa la mitad del espacio */
+}
+
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Tahoma', sans-serif;
+}
+.simple-table th, .simple-table td {
+  padding: 8px 5px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+.simple-table th {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+}
+.simple-table td {
+  font-size: 14px;
+}
+
+/* Estilos para "Píldoras" de Estado */
+.status {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.status.Pagado {
+  background-color: #E8F5E9; /* Verde claro */
+  color: #4CAF50;
+}
+.status.Enviado {
+  background-color: #E3F2FD; /* Azul claro */
+  color: #2196F3;
+}
+.status.Bajo {
+  background-color: #FFEBEE; /* Rojo claro */
+  color: #E57373;
+}
+
+/* Estilo para el pie de la tarjeta */
+.card-footer-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #C75D2C; /* Naranja */
+  text-decoration: none;
+}
+.card-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Botones de Icono (copiado de inventario.css) */
+.btn-icon {
+  background: none; border: none; padding: 6px;
+  border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease;
+}
+.btn-icon img { height: 20px; width: 20px; display: block; }
+.btn-icon.btn-edit:hover { background-color: #CFD8DC; }

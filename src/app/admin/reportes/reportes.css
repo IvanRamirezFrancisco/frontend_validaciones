@@ -1,0 +1,155 @@
+/* 1. Título de la Página */
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* 2. Estilo de Tarjeta Contenedora */
+.card-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* 3. Estilos de los Filtros */
+.filter-card {
+  display: flex;
+  align-items: flex-end; /* Alinea todo abajo */
+  gap: 20px;
+  flex-wrap: wrap; /* Para móviles */
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Pestañas de Reporte */
+.report-tabs {
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.tab-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #555;
+  cursor: pointer;
+}
+.tab-btn.active {
+  background-color: white;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Rango de Fechas */
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.date-range input[type="date"] {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.date-range span {
+  font-family: 'Tahoma', sans-serif;
+  color: #777;
+}
+
+/* Botones de Acción */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto; /* Empuja los botones a la derecha */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-primary {
+  color: white;
+  background-color: #4CAF50; /* Verde */
+}
+.btn-primary:hover { background-color: #45a049; }
+
+.btn-secondary {
+  color: #333;
+  background-color: #f0f0f0; /* Gris claro */
+  border: 1px solid #ddd;
+}
+.btn-secondary:hover { background-color: #e0e0e0; }
+
+/* 4. Tabla de Resultados (reutilizamos estilos) */
+.table-container-report {
+  overflow: hidden;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Tahoma', sans-serif;
+}
+th {
+  background-color: #f9f9f9;
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  text-transform: uppercase;
+  border-bottom: 1px solid #eee;
+}
+td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 16px;
+  color: #555;
+  border-bottom: 1px solid #f0f0f0;
+}
+tr:last-child td {
+  border-bottom: none;
+}

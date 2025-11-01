@@ -1,0 +1,73 @@
+<div *ngIf="kpis$ | async as kpis" class="kpi-container-inv">
+  <div class="kpi-card-inv">
+    <div class="kpi-label">Valor Total del Inventario</div>
+    <div class="kpi-value">{{ kpis.valorInventario | currency }}</div>
+  </div>
+  <div class="kpi-card-inv">
+    <div class="kpi-label">Total de Productos (SKUs)</div>
+    <div class="kpi-value">{{ kpis.totalProductos }}</div>
+  </div>
+  <div class="kpi-card-inv low-stock">
+    <div class="kpi-label">Items con Bajo Stock (< 5)</div>
+    <div class="kpi-value">{{ kpis.itemsBajoStock }}</div>
+  </div>
+</div>
+
+<div class="table-controls">
+  <div class="header-actions">
+    <a routerLink="nuevo" class="btn btn-primary">
+      <img src="icons/agregarempleado.png" alt="">
+      Agregar Nuevo Producto
+    </a>
+  </div>
+  
+  <div class="search-bar-inv">
+    <input type="text" placeholder="Buscar por Nombre o SKU..." 
+           [(ngModel)]="filtroNombre" (input)="filtrarProductos()">
+    <img src="icons/lupa.png" alt="Buscar">
+  </div>
+</div>
+
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Producto</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of productosFiltrados$ | async">
+        <td>{{ p.sku }}</td>
+        <td>{{ p.producto }}</td>
+        
+        <td>
+          <span class="stock-status" [class]="getStockStatus(p.stock)">
+            {{ p.stock }}
+          </span>
+        </td>
+
+        <td>{{ p.precio | currency }}</td>
+        <td class="acciones">
+          <a [routerLink]="['editar', p.sku]" class="btn-icon btn-edit" title="Editar">
+            <img src="icons/editar.png" alt="Editar">
+          </a>
+          <button (click)="eliminarProducto(p.sku)" class="btn-icon btn-delete" title="Eliminar">
+            <img src="icons/eliminar.png" alt="Eliminar">
+          </button>
+        </td>
+      </tr>
+      
+      <tr *ngIf="!(productosFiltrados$ | async)?.length">
+        <td colspan="5" style="text-align: center; padding: 20px;">
+          No se encontraron productos que coincidan con la búsqueda.
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

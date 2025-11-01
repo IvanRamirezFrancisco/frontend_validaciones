@@ -1,0 +1,87 @@
+<div class="container">
+  
+  <div class="promo-banner">
+    ¡Ofertas Especiales! 10% de descuento en guitarras Fender.
+  </div>
+
+  <button class="filter-toggle" (click)="toggleFilter(true)">
+    <img src="icons/menu.png" alt="Filtros">
+    Mostrar Filtros
+  </button>
+
+  <div class="catalog-layout">
+    
+    <aside class="filters-sidebar" [class.open]="isFilterOpen">
+      
+      <div class="filter-header">
+        <h3>Filtrar por</h3>
+        <button class="close-btn" (click)="toggleFilter(false)">
+          <img src="icons/cerrar.png" alt="Cerrar">
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <button class="filter-group-header" (click)="toggleFilterGroup('categoria')">
+          Categoría
+          <span class="filter-arrow" [class.open]="filterState.categoria"></span>
+        </button>
+        <div class="filter-group-content" [class.open]="filterState.categoria">
+          <label class="filter-option"><input type="checkbox"> Guitarras</label>
+          <label class="filter-option"><input type="checkbox"> Bajos</label>
+          <label class="filter-option"><input type="checkbox"> Teclados</label>
+          <label class="filter-option"><input type="checkbox"> Baterías</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <button class="filter-group-header" (click)="toggleFilterGroup('marca')">
+          Marca
+          <span class="filter-arrow" [class.open]="filterState.marca"></span>
+        </button>
+        <div class="filter-group-content" [class.open]="filterState.marca">
+          <label class="filter-option"><input type="checkbox"> Fender</label>
+          <label class="filter-option"><input type="checkbox"> Yamaha</label>
+          <label class="filter-option"><input type="checkbox"> Ibanez</label>
+          <label class="filter-option"><input type="checkbox"> Hohner</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <button class="filter-group-header" (click)="toggleFilterGroup('precio')">
+          Precio
+          <span class="filter-arrow" [class.open]="filterState.precio"></span>
+        </button>
+        <div class="filter-group-content" [class.open]="filterState.precio">
+          <label class="filter-option"><input type="radio" name="precio"> Hasta $1,000</label>
+          <label class="filter-option"><input type="radio" name="precio"> $1,000 a $5,000</label>
+          <label class="filter-option"><input type="radio" name="precio"> Más de $5,000</label>
+        </div>
+      </div>
+
+    </aside>
+    <main class="main-catalog">
+      
+      <div class="product-grid">
+        <div class="product-card" *ngFor="let p of productos">
+          
+          <a [routerLink]="['/producto', p.sku]" class="product-image-link">
+            <div class="product-image">
+              </div>
+          </a>
+    
+          <div class="product-info">
+            <a [routerLink]="['/producto', p.sku]" class="product-name-link">
+              <h4 class="product-name">{{ p.producto }}</h4>
+            </a>
+            <p class="product-desc">Sonido clásico y cálido, ideal para son huasteco y trova.</p>
+            <div class="product-price">{{ p.precio | currency }}</div>
+            <button class="btn-cta" (click)="agregarAlCarrito(p)">
+              Añadir al Carrito
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

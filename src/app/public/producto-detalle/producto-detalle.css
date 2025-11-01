@@ -1,0 +1,257 @@
+/* --- Contenedor Principal --- */
+.page-container {
+  background-color: white;
+  padding: 20px 0;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- 1. Breadcrumbs --- */
+.breadcrumbs {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+.breadcrumbs a {
+  color: #C75D2C;
+  text-decoration: none;
+}
+.breadcrumbs span {
+  color: #777;
+}
+
+/* --- 2. Layout Principal --- */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2/3 para la imagen, 1/3 para la info */
+  gap: 30px;
+}
+
+/* --- Columna Izquierda: Galería --- */
+.product-gallery {
+  display: flex;
+  gap: 10px;
+}
+.thumbnail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.thumb-box {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.thumb-box.active {
+  border-color: #C75D2C;
+}
+.thumb-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.main-image {
+  flex-grow: 1;
+  height: 500px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px; color: #ccc;
+}
+
+/* --- Columna Derecha: Info y Compra --- */
+.product-details-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.title-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.product-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+.product-sku {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  color: #888;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+.product-reviews {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.brand-logo {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+.stock-status {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #27ae60;
+  margin-top: 10px;
+}
+.product-price-detail {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333;
+  margin: 15px 0 5px 0;
+}
+.payment-info {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 15px 0;
+}
+
+/* Selector de Cantidad */
+.quantity-selector {
+  display: flex;
+  margin-bottom: 15px;
+}
+.quantity-selector button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.quantity-selector input {
+  width: 60px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  outline: none;
+}
+
+/* Botones de Acción */
+.action-buttons { display: flex; flex-direction: column; gap: 10px; }
+.btn-comprar, .btn-apartar {
+  display: block; width: 100%; padding: 12px;
+  font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700;
+  text-align: center; text-decoration: none; color: #333;
+  border: none; border-radius: 5px; cursor: pointer;
+}
+.btn-comprar {
+  background-color: #FFCF71; /* Mamey Claro (Inspirado en Faily) */
+  color: #333;
+}
+.btn-apartar {
+  background-color: #C75D2C; /* Naranja Tostado */
+  color: white;
+}
+.product-meta {
+  margin-top: 15px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+.product-meta span { display: block; margin-bottom: 5px; }
+
+/* --- 3. Pestañas (Tabs) --- */
+.product-tabs-container { margin-top: 40px; }
+.product-tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #777;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.tab.active {
+  color: #C75D2C;
+  border-bottom-color: #C75D2C;
+}
+.tab-content {
+  padding-top: 20px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+.tab-content h3 { font-family: 'Montserrat', sans-serif; }
+
+/* --- 4. Productos Similares --- */
+.related-products {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+/* (Copiamos los estilos del catálogo para la rejilla) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.product-card {
+  background-color: white; border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.product-image-link, .product-name-link { text-decoration: none; color: inherit; }
+.product-image { height: 180px; background-color: #f0f0f0; }
+.product-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+.product-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 5px 0; }
+.product-name-link:hover .product-name { color: #C75D2C; }
+.product-price { font-family: 'Tahoma', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 15px; flex-grow: 1; }
+.btn-cta { 
+  display: block; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; 
+  font-weight: 500; color: white; background-color: #C75D2C; padding: 10px; 
+  border-radius: 5px; transition: background-color 0.2s ease; border: none; cursor: pointer;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+  .product-gallery {
+    flex-direction: column-reverse; /* Thumbnails abajo */
+  }
+  .thumbnail-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .main-image { height: 350px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,151 @@
+/* En: src/app/admin/layout-admin/layout-admin.css */
+
+/* :host es la etiqueta del componente (app-layout-admin) */
+/* Lo convertimos en un contenedor flex que ocupa toda la pantalla */
+:host {
+  display: flex;
+  height: 100vh; /* 100% de la altura de la ventana */
+  font-family: 'Tahoma', sans-serif; /* Tipografía de tu guía [cite: 60] */
+}
+
+.sidebar {
+  width: 260px; /* Ancho de la barra lateral */
+  flex-shrink: 0; /* Evita que se encoja */
+
+  /* Color de fondo de tu guía de backend [cite: 116] */
+  background-color: #34495e; 
+  color: white;
+
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Organiza los elementos verticalmente */
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif; /* Tipografía de tu guía [cite: 58] */
+  font-weight: 700; /* Bold [cite: 71] */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Empuja el "Cerrar Sesión" hacia abajo */
+}
+
+.sidebar nav a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif; /* [cite: 58] */
+  font-size: 16px; /* [cite: 97] */
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar nav a:hover {
+  /* Usamos un gris de tu paleta para el hover [cite: 49] */
+  background-color: #535c66;
+}
+
+.sidebar nav a .icon {
+  margin-right: 10px;
+}
+
+.sidebar .footer-sidebar {
+  margin-top: auto; /* Pega el pie de la barra al fondo */
+}
+
+.sidebar .footer-sidebar a {
+  color: #bdc3c7; /* Un gris más suave */
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+.main-content {
+  flex-grow: 1; /* Ocupa todo el espacio restante */
+
+  /* Fondo de contenido de tu guía de backend [cite: 120] */
+  background-color: #EEEEEE; 
+  padding: 24px;
+  overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+.sidebar .footer-sidebar button {
+  width: 100%;
+  background: none;
+  border: 1px solid #bdc3c7; /* Mismo color que el 'a' */
+  color: #bdc3c7;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.sidebar .footer-sidebar button:hover {
+  background-color: white;
+  color: #34495e;
+}
+/* --- Estilos para Iconos del Menú --- */
+.sidebar nav a .icon-img {
+  height: 20px; /* Ajusta el tamaño */
+  width: 20px;
+  margin-right: 10px;
+  /* Opcional: invierte el color si tus PNG son negros */
+  /* filter: invert(1); */ 
+}
+
+.sidebar nav a .icon {
+  font-size: 20px; /* Mantiene el tamaño del emoji */
+  width: 20px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+/* --- Estilo para Botón de Cerrar Sesión (Icono) --- */
+.btn-logout-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.btn-logout-icon img {
+  height: 28px;
+  width: 28px;
+  /* Opcional: invierte el color si tu PNG es negro */
+  /* filter: invert(0.8); */
+}
+
+.btn-logout-icon:hover {
+  background-color: #535c66; /* Gris de tu paleta */
+}
+/* --- Estilo para el enlace ACTIVO --- */
+
+.sidebar nav a.active {
+  /* Color Mamey Claro de tu guía */
+  background-color: #FFCF71; 
+
+  /* Color Gris Oscuro de tu guía */
+  color: #34495e; 
+  font-weight: 700; /* Lo hacemos negrita */
+}
+
+/* Opcional: Si el ícono activo es un PNG blanco, lo invertimos */
+.sidebar nav a.active .icon-img {
+  filter: invert(0.2); /* Lo oscurece para que se vea en el fondo claro */
+}
+
+/* Opcional: Si el emoji se ve mal, lo ajustamos */
+.sidebar nav a.active .icon {
+  color: #34495e; 
+}

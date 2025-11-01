@@ -1,0 +1,237 @@
+/* Contenedor */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 1. Banner Promocional */
+.promo-banner {
+  background-color: #FFCF71;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+/* 2. Layout del Catálogo */
+.catalog-layout {
+  display: flex;
+  gap: 20px;
+}
+
+/* 3. Sidebar de Filtros (Estilo Mercado Libre) */
+.filters-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  /* Ahora el fondo blanco vuelve a estar por defecto */
+  background-color: white; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 15px 20px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.filter-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+/* --- ESTILOS DE FILTRO ACORDEÓN --- */
+.filter-group {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.filter-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+.filter-arrow {
+  display: inline-block;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  padding: 4px;
+  border-color: #555;
+  transform: rotate(45deg); /* Flecha hacia abajo */
+  transition: transform 0.2s ease;
+}
+.filter-arrow.open {
+  transform: rotate(-135deg); /* Flecha hacia arriba */
+}
+.filter-group-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 5px;
+}
+.filter-group-content.open {
+  max-height: 500px; /* Altura máxima para la animación */
+  padding-top: 10px;
+}
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+}
+.filter-option input {
+  width: 16px;
+  height: 16px;
+}
+
+/* 4. Contenido Principal */
+.main-catalog {
+  flex-grow: 1;
+}
+
+/* 5. REJILLA DE PRODUCTOS (4 COLUMNAS) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 20px;
+}
+
+/* --- Tarjeta de Producto (Estilos base) --- */
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+}
+.product-image-link, .product-name-link { text-decoration: none; color: inherit; }
+.product-image {
+  height: 180px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-family: 'Tahoma', sans-serif;
+}
+.product-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+.product-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 5px 0; color: #333; }
+.product-name-link:hover .product-name { color: #C75D2C; }
+.product-desc { font-family: 'Tahoma', sans-serif; font-size: 14px; color: #777; flex-grow: 1; margin: 0 0 10px 0; }
+.product-price { font-family: 'Tahoma', sans-serif; font-weight: 700; font-size: 18px; color: #333; margin-bottom: 15px; }
+.btn-cta { 
+  display: block; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; 
+  font-weight: 500; color: white; background-color: #C75D2C; padding: 10px; 
+  border-radius: 5px; transition: background-color 0.2s ease; border: none; cursor: pointer;
+}
+.btn-cta:hover { background-color: #b35427; }
+
+/* ============================================== */
+/* --- ARREGLOS RESPONSIVE (MÓVIL) --- */
+/* ============================================== */
+
+/* Botón de "Mostrar Filtros" (Hamburguesa) */
+.filter-toggle {
+  display: none; /* ★★ CORREGIDO: Oculto en PC por defecto ★★ */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  align-items: center;
+  gap: 8px;
+}
+.filter-toggle img {
+  height: 20px;
+  width: 20px;
+}
+
+/* Botón 'X' (Cerrar) */
+.close-btn {
+  display: none; /* ★★ CORREGIDO: Oculto en PC por defecto ★★ */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.close-btn img {
+  height: 20px; /* ★★ CORREGIDO: Tamaño forzado ★★ */
+  width: 20px;
+}
+
+/* --- Media Query (La Magia Responsive) --- */
+@media (max-width: 1200px) {
+  /* Pasamos a 3 columnas */
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  /* Muestra el botón de "Mostrar Filtros" */
+  .filter-toggle {
+    display: flex; /* ★★ CORREGIDO: Solo se muestra en móvil ★★ */
+  }
+  
+  /* Oculta la barra de filtros por defecto */
+  .filters-sidebar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    background-color: white; 
+    padding: 20px;
+  }
+  .filters-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  /* Muestra el botón 'X' (cerrar) */
+  .close-btn {
+    display: block; /* ★★ CORREGIDO: Solo se muestra en móvil ★★ */
+  }
+
+  /* Pasamos a 2 columnas */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para móviles muy pequeños, 1 columna */
+@media (max-width: 500px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

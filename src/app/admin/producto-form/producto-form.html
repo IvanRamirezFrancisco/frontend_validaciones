@@ -1,0 +1,42 @@
+<h1 class="page-title">{{ isEditMode ? 'Editar' : 'Agregar' }} Producto</h1>
+
+<form class="product-form" (ngSubmit)="onSubmit()">
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label for="sku">SKU (Stock Keeping Unit)</label>
+      <input type="text" id="sku" placeholder="Ej. FEN-FA125" 
+             name="sku" [(ngModel)]="productoForm.sku" 
+             [disabled]="isEditMode">
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre del Producto</label>
+      <input type="text" id="nombre" placeholder="Ej. Guitarra Acústica Fender"
+             name="nombre" [(ngModel)]="productoForm.producto" required>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label for="precio">Precio de Venta</label>
+      <input type="number" id="precio" placeholder="Ej. 3500.00"
+             name="precio" [(ngModel)]="productoForm.precio" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="stock">Cantidad en Stock</label>
+      <input type="number" id="stock" placeholder="Ej. 10"
+             name="stock" [(ngModel)]="productoForm.stock" required>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">
+      <img src="icons/gurdar.png" alt=""> {{ isEditMode ? 'Actualizar' : 'Guardar' }} Producto
+    </button>
+    <button type="button" (click)="cancelar()" class="btn btn-secondary">
+      Cancelar
+    </button>
+  </div>
+</form>

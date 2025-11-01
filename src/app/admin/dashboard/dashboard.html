@@ -1,0 +1,78 @@
+<h1 class="page-title">Dashboard</h1>
+
+<div class="kpi-container">
+  <div class="kpi-card">
+    <div class="kpi-label">Ventas de Hoy</div>
+    <div class="kpi-value">$1,250.00</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Transacciones de Hoy</div>
+    <div class="kpi-value">12</div>
+  </div>
+  <div class="kpi-card low-stock">
+    <div class="kpi-label">Productos con Bajo Stock</div>
+    <div class="kpi-value">{{ productosBajoStock.length }}</div>
+  </div>
+</div>
+
+<div class="card-container chart-container">
+  <h3 class="card-title">Ventas (Últimos 7 Días)</h3>
+  <div class="chart-area">
+    <div class_="" *ngFor="let dia of datosGrafico">
+      <div class="bar" [style.height]="getBarHeight(dia.venta)" [title]="dia.venta | currency"></div>
+      <div class="bar-label">{{ dia.dia }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="tables-layout">
+
+  <div class="card-container table-container">
+    <h3 class="card-title">Pedidos Recientes</h3>
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>Cliente</th>
+          <th>Total</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidosRecientes">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.cliente }}</td>
+          <td>{{ pedido.total | currency }}</td>
+          <td><span class="status" [class]="pedido.estado">{{ pedido.estado }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/admin/pedidos" class="card-footer-link">Ver todos los pedidos</a>
+  </div>
+
+  <div class="card-container table-container">
+    <h3 class="card-title">Productos con Bajo Stock</h3>
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Stock</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productosBajoStock">
+          <td>{{ p.producto }}</td>
+          <td><span class="status Bajo">{{ p.stock }}</span></td>
+          <td>
+            <a [routerLink]="['/admin/inventario/editar', p.sku]" class="btn-icon btn-edit" title="Editar">
+              <img src="icons/editar.png" alt="Editar">
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/admin/inventario" class="card-footer-link">Ir a inventario</a>
+  </div>
+
+</div>

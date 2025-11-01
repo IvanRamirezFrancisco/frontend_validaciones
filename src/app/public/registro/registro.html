@@ -1,0 +1,318 @@
+<section class="registro-container">
+  <div class="registro-card">
+    <!-- Header con logo y progreso -->
+    <div class="registro-header">
+      <div class="logo-container">
+        <img src="logoP.png" alt="Casa de Música" class="logo-icon">
+        <h1>Casa de Música</h1>
+      </div>
+      <p class="registro-subtitle">Crea tu cuenta y únete a nuestra comunidad musical</p>
+      
+      <!-- Indicador de progreso -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="progressPercentage"></div>
+        </div>
+        <div class="progress-steps">
+          <div class="step" [class.active]="step >= 1" [class.completed]="step > 1">
+            <span class="step-number">1</span>
+            <span class="step-label">Personal</span>
+          </div>
+          <div class="step" [class.active]="step >= 2" [class.completed]="step > 2">
+            <span class="step-number">2</span>
+            <span class="step-label">Contacto</span>
+          </div>
+          <div class="step" [class.active]="step >= 3" [class.completed]="step > 3">
+            <span class="step-number">3</span>
+            <span class="step-label">Cuenta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario de registro -->
+    <form [formGroup]="registroForm" class="registro-form" (ngSubmit)="handleRegistro()">
+      
+      <!-- PASO 1: Información Personal -->
+      <div class="form-step" *ngIf="step === 1">
+        <h3 class="step-title">
+          <i class="step-icon">
+            <img src="assets/images/usuario.png" alt="Usuario" style="width: 16px; height: 16px;">
+          </i>
+          Información Personal
+        </h3>
+        <p class="step-description">Cuéntanos un poco sobre ti</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="nombre"
+                formControlName="nombre"
+                class="form-control"
+                [class.error]="nombre?.touched && nombre?.invalid"
+                [class.success]="nombre?.valid && nombre?.value"
+                placeholder="Tu nombre">
+              <i class="input-icon" 
+                 [class.error]="nombre?.touched && nombre?.invalid"
+                 [class.success]="nombre?.valid && nombre?.value">
+                <img src="assets/images/usuario.png" alt="Usuario" style="width: 16px; height: 16px;">
+              </i>
+            </div>
+            @if (nombre?.touched && nombre?.invalid) {
+              <div class="field-error">
+                {{ getErrorMessage('nombre') }}
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="apellido" class="form-label">Apellido</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="apellido"
+                formControlName="apellido"
+                class="form-control"
+                [class.error]="apellido?.touched && apellido?.invalid"
+                [class.success]="apellido?.valid && apellido?.value"
+                placeholder="Tu apellido">
+              <i class="input-icon"
+                 [class.error]="apellido?.touched && apellido?.invalid"
+                 [class.success]="apellido?.valid && apellido?.value">
+                <img src="assets/images/usuario.png" alt="Usuario" style="width: 16px; height: 16px;">
+              </i>
+            </div>
+            @if (apellido?.touched && apellido?.invalid) {
+              <div class="field-error">
+                {{ getErrorMessage('apellido') }}
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+          <div class="input-group">
+            <input
+              type="date"
+              id="fechaNacimiento"
+              formControlName="fechaNacimiento"
+              class="form-control"
+              [class.error]="fechaNacimiento?.touched && fechaNacimiento?.invalid"
+              [class.success]="fechaNacimiento?.valid && fechaNacimiento?.value">
+            <i class="input-icon"
+               [class.error]="fechaNacimiento?.touched && fechaNacimiento?.invalid"
+               [class.success]="fechaNacimiento?.valid && fechaNacimiento?.value"></i>
+          </div>
+          @if (fechaNacimiento?.touched && fechaNacimiento?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('fechaNacimiento') }}
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- PASO 2: Información de Contacto -->
+      <div class="form-step" *ngIf="step === 2">
+        <h3 class="step-title">
+          <i class="step-icon">📞</i>
+          Información de Contacto
+        </h3>
+        <p class="step-description">¿Cómo podemos contactarte?</p>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <div class="input-group">
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              [class.error]="email?.touched && email?.invalid"
+              [class.success]="email?.valid && email?.value"
+              placeholder="tu@email.com">
+            <i class="input-icon"
+               [class.error]="email?.touched && email?.invalid"
+               [class.success]="email?.valid && email?.value">📧</i>
+          </div>
+          @if (email?.touched && email?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('email') }}
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <div class="input-group">
+            <input
+              type="tel"
+              id="telefono"
+              formControlName="telefono"
+              class="form-control"
+              [class.error]="telefono?.touched && telefono?.invalid"
+              [class.success]="telefono?.valid && telefono?.value"
+              placeholder="5512345678"
+              maxlength="10">
+            <i class="input-icon"
+               [class.error]="telefono?.touched && telefono?.invalid"
+               [class.success]="telefono?.valid && telefono?.value">📱</i>
+          </div>
+          <small class="form-hint">10 dígitos sin espacios</small>
+          @if (telefono?.touched && telefono?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('telefono') }}
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- PASO 3: Credenciales y Configuración -->
+      <div class="form-step" *ngIf="step === 3">
+        <h3 class="step-title">
+          <i class="step-icon">🔐</i>
+          Configuración de Cuenta
+        </h3>
+        <p class="step-description">Protege tu cuenta con una contraseña segura</p>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              class="form-control"
+              [class.error]="password?.touched && password?.invalid"
+              [class.success]="password?.valid && password?.value"
+              placeholder="Crea una contraseña segura">
+            <button
+              type="button"
+              class="password-toggle"
+              (click)="togglePassword()">
+              <img [src]="showPassword ? 'assets/images/invisible.png' : 'assets/images/ojo.png'" 
+                   [alt]="showPassword ? 'Ocultar' : 'Mostrar'" 
+                   style="width: 16px; height: 16px;">
+            </button>
+          </div>
+          <div class="password-requirements">
+            <small [class.met]="hasMinLength()">✓ Mínimo 8 caracteres</small>
+            <small [class.met]="hasUppercase()">✓ Una mayúscula</small>
+            <small [class.met]="hasNumber()">✓ Un número</small>
+          </div>
+          @if (password?.touched && password?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('password') }}
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+          <div class="input-group">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              class="form-control"
+              [class.error]="confirmPassword?.touched && confirmPassword?.invalid"
+              [class.success]="confirmPassword?.valid && confirmPassword?.value"
+              placeholder="Repite tu contraseña">
+            <button
+              type="button"
+              class="password-toggle"
+              (click)="toggleConfirmPassword()">
+              <img [src]="showConfirmPassword ? 'assets/images/invisible.png' : 'assets/images/ojo.png'" 
+                   [alt]="showConfirmPassword ? 'Ocultar' : 'Mostrar'" 
+                   style="width: 16px; height: 16px;">
+            </button>
+          </div>
+          @if (confirmPassword?.touched && confirmPassword?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('confirmPassword') }}
+            </div>
+          }
+        </div>
+
+        <!-- Términos y condiciones -->
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              formControlName="aceptaTerminos"
+              class="checkbox-input">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">
+              Acepto los <a href="/terminos" target="_blank">términos y condiciones</a> 
+              y la <a href="/privacidad" target="_blank">política de privacidad</a>
+            </span>
+          </label>
+          @if (aceptaTerminos?.touched && aceptaTerminos?.invalid) {
+            <div class="field-error">
+              {{ getErrorMessage('aceptaTerminos') }}
+            </div>
+          }
+        </div>
+
+        <!-- Promociones -->
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              formControlName="recibirPromociones"
+              class="checkbox-input">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">
+              Quiero recibir ofertas especiales y promociones por email
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Botones de navegación -->
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="prevStep()"
+          *ngIf="step > 1"
+          [disabled]="isLoading">
+          ← Anterior
+        </button>
+
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="nextStep()"
+          *ngIf="step < totalSteps"
+          [disabled]="isLoading">
+          Siguiente →
+        </button>
+
+        <button
+          type="submit"
+          class="btn-primary btn-submit"
+          *ngIf="step === totalSteps"
+          [disabled]="isLoading || registroForm.invalid">
+          @if (isLoading) {
+            <span class="loading-spinner"></span>
+            Creando cuenta...
+          } @else {
+            🎵 Crear mi cuenta
+          }
+        </button>
+      </div>
+    </form>
+
+    <!-- Enlaces adicionales -->
+    <div class="registro-footer">
+      <p>¿Ya tienes cuenta? 
+        <a routerLink="/login" class="login-link">Inicia sesión aquí</a>
+      </p>
+      <a routerLink="/" class="back-link">← Volver al inicio</a>
+    </div>
+  </div>
+</section>
